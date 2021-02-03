@@ -1,0 +1,34 @@
+#! /usr/bin/env python3
+'''If you change this file, remember to copy the file 
+    to duplPython with the .py exension'''
+import psutil
+import datetime
+import breakTimer
+
+def calcMinsPassedAndRemaining():
+    breakProc = returnBreakProcess()
+    if not breakProc:
+        print('No breaktimer has started')
+        return [0, None]
+    startTime = datetime.datetime.fromtimestamp(breakProc.create_time())
+    timeDifference = datetime.datetime.now() - startTime
+    
+    minsPassed = round(timeDifference.total_seconds() / 60)
+    minsRemaining = (None if len(breakProc.cmdline()) < 3 
+                     else int(breakProc.cmdline()[2]) - minsPassed)
+    
+    return [minsPassed, minsRemaining]
+
+def returnBreakProcess():
+    breakProc = None
+    for proc in psutil.process_iter(['cmdline']):
+        if (proc.info['cmdline'] and 'breakTimer.py' in proc.info['cmdline']):
+            breakProc = proc
+            break
+    return breakProc
+
+if __name__ == "__main__":
+    [minsPassed, minsRemaining] = calcMinsPassedAndRemaining()
+    print('Passed:', str(minsPassed).rjust(5),  'minutes')
+    minsRemaining = minsRemaining if minsRemaining else breakTimer.defaultTime
+    print('Till break:', minsRemaining, 'minutes')
