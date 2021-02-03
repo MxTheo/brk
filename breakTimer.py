@@ -6,7 +6,7 @@ import psutil
 import math
 import datetime
 
-defaultTime = 30 #Change this to set a different amount of minutes for work
+defaultTime = 45 #Change this to set a different amount of minutes for work
 
 def killBreakTimers():
     for proc in psutil.process_iter(['cmdline']):
