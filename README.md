@@ -2,6 +2,7 @@
 A simple breaktimer that results at breaktime.png flashing after the time expires
 
 INSTALLING:
+- Download the files (into zip)
 - Extract the files into a directory which is in your bash $PATH
 - In the brk file:
     Change the path after 'cd' to the location where you extracted the brk files
