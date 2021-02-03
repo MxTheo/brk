@@ -19,6 +19,6 @@ Example output:
     Till break: 15 minutes
 EOF
 else
-    cd ~/scripts #Change the path to the location where you extracted the brk files
+    cd $(dirname $(which brk))
     python3 breakTimer.py $1 &
 fi
