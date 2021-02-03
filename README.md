@@ -1,11 +1,10 @@
 # brk
 A simple breaktimer that results at breaktime.png flashing after the time expires
 
-INSTALLING:
-1. Download the files (into zip)
-2. Extract the files into a directory which is in your bash $PATH
-3. In the brk file:
-    Change the path after 'cd' to the location where you extracted the brk files
+DEPENDENCIES:
+1. subprocess
+2. keyboard
+3. psutil
   
 ---
 
