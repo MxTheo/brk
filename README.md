@@ -11,6 +11,9 @@ INSTALL:
 4. If you are running on a different system then Mac OS, change the shebang line in brktime
     - WINDOWS: #! python3
     - LINUX:         #! /usr/bin/python3
+5. Make files brk and brktime executable, by running:
+    - chmod +x brk
+    - chmod +x brktime
 
 PYTHON DEPENDENCIES:
 1. subprocess
