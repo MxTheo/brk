@@ -1,16 +1,28 @@
 # brk
 A simple breaktimer that results at breaktime.png flashing after the time expires
 
-DEPENDENCIES:
+---
+
+INSTALL:
+1. Download the files
+2. Extract the files in your custom directory for scripts
+3. If you do not have a custom directory for scripts, create one and add the path to your bash_profile
+    - For example PATH="/path/to/scripts/:$PATH"
+4. If you are running on a different system then Mac OS, change the shebang line in brktime
+    - WINDOWS: #! python3
+    - LINUX:         #! /usr/bin/python3
+
+PYTHON DEPENDENCIES:
 1. subprocess
 2. keyboard
 3. psutil
-  
+
 ---
 
 USAGE:
 - brk 30 -> breaktime.png flashing after 30 minutes
-- brk    -> breaktime.png flashing after default amount of minutes
+- brk       -> breaktime.png flashing after default amount of minutes
+- brk -h  -> will output this help info in the terminal
 
 You can reset the break timer by calling the brk command again with the new time set
 
