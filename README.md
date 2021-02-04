@@ -36,3 +36,8 @@ Example output:
 
     Passed:    15 minutes
     Till break: 15 minutes
+
+---
+
+KNOWN BUGS:
+- First time after startup, you have to call the brk command twice. The first call will not result in starting the timer
