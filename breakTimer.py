@@ -11,7 +11,7 @@ defaultTime = 45 #Change this to set a different amount of minutes for work
 def killBreakTimers():
     for proc in psutil.process_iter(['cmdline']):
         if proc.info['cmdline'] and 'breakTimer.py' in proc.info['cmdline']:
-            if math.isclose(proc.create_time(), time.time(), rel_tol=5):
+            if math.isclose(proc.create_time(), time.time(), rel_tol=1):
                 continue
             proc.terminate()
 
