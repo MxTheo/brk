@@ -1,35 +1,7 @@
 #! /usr/bin/env python3
-'''NOTE TO SELF: If you change this file, remember to copy the file 
-    to duplPython with the .py exension
-    So that python unit tests are available'''
-import psutil
-import datetime
-import breakTimer
-
-def calcMinsPassedAndRemaining():
-    breakProc = returnBreakProcess()
-    if not breakProc:
-        print('No breaktimer has started')
-        return [0, None]
-    startTime = datetime.datetime.fromtimestamp(breakProc.create_time())
-    print(startTime)
-    timeDifference = datetime.datetime.now() - startTime
-    
-    minsPassed = round(timeDifference.total_seconds() / 60)
-    minsRemaining = (breakTimer.defaultTime if len(breakProc.cmdline()) < 3 
-                     else int(breakProc.cmdline()[2]))
-    minsRemaining = minsRemaining - minsPassed
-    return [minsPassed, minsRemaining]
-
-def returnBreakProcess():
-    breakProc = None
-    for proc in psutil.process_iter(['cmdline']):
-        if (proc.info['cmdline'] and 'breakTimer.py' in proc.info['cmdline']):
-            breakProc = proc
-            break
-    return breakProc
+import brktimeFunc
 
 if __name__ == "__main__":
-    [minsPassed, minsRemaining] = calcMinsPassedAndRemaining()
+    [minsPassed, minsRemaining] = brktimeFunc.calcMinsPassedAndRemaining()
     print('Passed:', str(minsPassed).rjust(5),  'minutes')
     print('Till break:', minsRemaining, 'minutes')

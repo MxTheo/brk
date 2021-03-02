@@ -6,7 +6,7 @@ import psutil
 import math
 import datetime
 
-defaultTime = 45 #Change this to set a different amount of minutes for work
+defaultTime = 30 #Change this to set a different amount of minutes for work
 
 def killBreakTimers():
     for proc in psutil.process_iter(['cmdline']):
@@ -19,11 +19,11 @@ def timeBreak(minutes):
     showInfo(minutes)
     time.sleep(minutes*60)
     closeWindow = 'cmd+w' if sys.platform == 'darwin' else 'ctr+w'
-    for i in range(2):
+    for _ in range(2):
         subprocess.Popen(['open', 'breaktime.png'])
-        time.sleep(0.95)
+        time.sleep(0.80)
         keyboard.send(closeWindow)
-        time.sleep(0.5)
+        time.sleep(0.35)
     subprocess.Popen(['open', 'breaktime.png'])
 
 def showInfo(minutes):
@@ -33,4 +33,5 @@ def showInfo(minutes):
 if __name__ == "__main__":
     killBreakTimers()
     minutes = defaultTime if len(sys.argv) == 1 else int(sys.argv[1])
+    minutes = minutes if minutes > 0 else 0
     timeBreak(minutes)

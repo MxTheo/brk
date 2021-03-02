@@ -1,0 +1,14 @@
+#! /usr/bin/env python3
+import os
+import sys
+import time
+import brktimeFunc
+
+def addMins(minutes):
+    _, minRemaining = brktimeFunc.calcMinsPassedAndRemaining()
+    os.system(f'brk {minRemaining+minutes}')
+
+if __name__ == "__main__":
+    minutes = 0 if len(sys.argv) == 1 else int(sys.argv[1])
+    addMins(minutes)
+    time.sleep(1.6)
